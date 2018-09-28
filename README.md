@@ -111,7 +111,7 @@ You have already created a React application as part of setting up the Github re
 7) Create a folder called db at the root of the project.
 8) Set up massive in your server using the connection string you saved in your .env file.
 9) Make sure to run `nodemon` again and make sure your database is connecting.
-10) Copy the connection string from your .env file into SQLTabs and create the products table.
+10) Copy the credentials to connect your database to PGAdmin. Then use PGAdmin to create the products table.
 11) It's helpful to insert some dummy data into your database at this point to help you test as you go along. 
 
 # Part 1
@@ -166,8 +166,8 @@ It's time to write your GET endpoint so you get the inventory list from the data
 * Open server/index.js and create the entry point for the endpoint. The url should be '/api/inventory'.
 * Create the function for this endpoint in controller.js. Set up your endpoint to just send a string (I recommend 'It worked!!! Woohoo!!!') so you can make sure the endpoint works before worrying about the database. Remember to set a status code as well.
 * Make sure `nodemon` is running and open up Postman to test your endpoint. Once you get your test string back you're ready to move on.
-* Open SQLTabs and write a query to get all the products from the table. Make sure to test it.
-* Create a sql file in your db folder named 'get_inventory'. Copy the query you wrote in SQLTabs into the file and save it. 
+* Open PGAdmin and write a query to get all the products from the table. Make sure to test it.
+* Create a sql file in your db folder named 'get_inventory'. Copy the query you wrote in PGAdmin into the file and save it. 
 * Go back to the function you wrote in your controller and remove the test response. Replace it with the database function get_inventory. Now set up the resonse to send the products that come out of the database (with a status code of course).
 * Go back to Postman and test your endpoint again. This time you should get the inventory list.
 
@@ -186,9 +186,9 @@ Next you need to write your POST endpoint so you can add new products to your da
 * Create the function for this endpoint in controller.js. This endpoint should pull the name, price, and image URL off of the body. For now all you should do is console.log these values to make sure they're getting to the endpoint correctly.
 * Just like before, we should send a test string in the response so we can test our endpoint.
 * Make sure `nodemon` is running and open Postman again. When testing your endpoint, make sure to send a fake name, price, and image URL on the body. Once you get the test string back, and you can see the console.log in your endpoint showing the same fake values you sent in Postman, you're ready to move on.
-* Open SQLTabs and write a query to add a new product in the table. Make sure to test it.
-    * Remember that parameters ($1, $2, etc) only work in your project files and not in SQLTabs. Test your sql query with actual data here.
-* Create a sql file in your db folder named 'create_product'. Copy the query you wrote in SQLTabs into the file, change the dummy data to parameters, and save it. 
+* Open PGAdmin and write a query to add a new product in the table. Make sure to test it.
+    * Remember that parameters ($1, $2, etc) only work in your project files and not in PGAdmin. Test your sql query with actual data here.
+* Create a sql file in your db folder named 'create_product'. Copy the query you wrote in PGAdmin into the file, change the dummy data to parameters, and save it. 
 * Go back to the function you wrote in your controller and remove the test response. Replace it with the database function create_product. Now set up the response to send the 'all good' status code. 
 * Go back to Postman and test your endpoint again. This time you shouldn't get any data in the response, but the status code should be green and say 'OK'. Query your database and you should see the new product in your products table.
 
